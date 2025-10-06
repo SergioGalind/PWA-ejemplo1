@@ -1,7 +1,8 @@
 {
     "name": "Mi primer PWA",
     "short_name" : " MiPWA",
-    "start_url": "./index.html",
+    "start_url": "PWA-ejemplo1/index.html",
+    "scope": "PWA-ejemplo1/",
     "display": "standalone",
     "backgroundcolor": "#ffffff",
     "theme_color": "#2189f3",
