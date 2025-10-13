@@ -1,12 +1,14 @@
 //Plantilla de service worker 
 
 //1. nombre y archivos a cachear 
-const CACHE_NAME = "mi-pwa-cache-v1";
-const BASE_PATH = "PWA-ejemplo1/"; //Ajustar a la ruta del proyecto
+const CACHE_NAME = "mi-pwa-v1";
+const BASE_PATH = "./pwa-ejemplo1/";
 const urlsToCache = [
     `${BASE_PATH}index.html`,
-    `${BASE_PATH}manifest.josn`,
-    `${BASE_PATH}offline.html`,
+    `${BASE_PATH}manifest.json`,
+    `${BASE_PATH}offline.html,`
+    `${BASE_PATH}icons/icon-96x96.png`,
+    `${BASE_PATH}icons/icon-180x180.png`,
     `${BASE_PATH}icons/icon-192x192.png`,
     `${BASE_PATH}icons/icon-512x512.png`,
 ] ;
@@ -40,7 +42,7 @@ self.addEventListener("activate", event => {
     self.addEventListener("fetch", event => {
         event.respondWith(
             caches.match(event.request).then( response => {
-                return response || fetch(event.request).catch(() => caches.match(`${BASE_PATH}("offline.html"`));
+                return response || fetch(event.request).catch(() => caches.match(`${BASE_PATH}offline.html`));
             })
         );
     });
@@ -57,4 +59,3 @@ self.addEventListener("activate", event => {
    // Opcional:
 //SYNC -> Sincronización en segundo plano (opcional)
 // Manejo de eventos de APIS que el navegador soporte
-    

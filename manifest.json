@@ -1,33 +1,32 @@
 {
     "name": "Mi primer PWA",
-    "short_name" : " MiPWA",
+    "short_name": "PWA1",
     "start_url": "PWA-ejemplo1/index.html",
     "scope": "PWA-ejemplo1/",
     "display": "standalone",
     "backgroundcolor": "#ffffff",
-    "theme_color": "#2189f3",
-    "orienttion": "portrait",
-    "iconos" : [
+    "theme_color":"#2196f3",
+    "orientation": "portrait",
+    "iconos": [
         {
             "src": "PWA-ejemplo1/icons/icon-96x96.png",
-            "sizes" : "96x96.png",
-            "type" : "image/png"
+            "sizes": "96x96.png",
+            "type": "image/png"
         },
         {
             "src": "PWA-ejemplo1/icons/icon-180x180.png",
-            "sizes" : "180x180.png",
-            "type" : "image/png"
+            "sizes": "180x180.png",
+            "type": "image/png"
         },
         {
             "src": "PWA-ejemplo1/icons/icon-192x192.png",
-            "sizes" : "192x192.png",
-            "type" : "image/png"
+            "sizes": "192x192.png",
+            "type": "image/png"
         },
-    
         {
-            "src": "icons/icon-512x512.png",
-            "sizes" : "512x512.png",
-            "type" : "image/png"
+            "src": "PWA-ejemplo1/icons/icon-512x512.png",
+            "sizes": "512x512.png",
+            "type": "image/png"
         }
     ]
 }
