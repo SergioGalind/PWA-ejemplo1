@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi primera PWA</title>
+    <title>Sin internet mi chavo</title>
+    <!--Vincular manifest-->
+    <link rel="manifest" href="manifest.json">
 
-    <!-- Vincular el manifest -->
-    <link rel="manifest" href="./manifest.json">
-
-    <!-- Color de la barra del navegador -->
+    <!--Color de la barra del navegador en moviles-->
     <meta name="theme-color" content="#2196f3">
 </head>
 <body>
-    <h1>Bienvenides a mi PWA</h1>
-    <h2>offline</h2>
-    <p>Lo sentimos eres pobre y no tienes internet</p>
+    <h1>Bienvenido a mi PWA</h1>
+    <p>todo chidoo</p>
+    <button onclick="alert('Hola desde mi PWA, por favor espera...')">
+        Descargar
+    </button>
 
-    <button onclick="alert('Hola desde la PWA')">Click aquí</button>
+    <ul>
+        <li>
+            <a href="/index.html">Inicio</a>
+            <a href="/login.html">Iniciar sesión</a>
+        </li>
+    </ul>
 
-    <!-- Registrar el service worker -->
+    <!--Registrar el service worker-->
     <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("./sw.js")
-            .then(reg => console.log("Service Worker registrado"))
-            .catch(err => console.error("Error al registrar el Service Worker", err));
+        if("serviceWorker" in navigator){
+            navigator.serviceWorker.register("sw.js")
+            .then(reg => console.log("service  Worker registrado"))
+            .catch(err => console.log("Error al registrar el SW"))
         }
     </script>
 </body>
