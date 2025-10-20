@@ -1,16 +1,16 @@
 {
-    "name": "Mi primera PWA",
-    "short_name": "PWA1",
-    "start_url": "./index.html",
-    "scope": "./",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#2196f3",
-    "orientation": "portrait",
-    "icons": [
-        { "src": "/PWA-ejemplo1/icons/icon-96x96.png", "sizes": "96x96", "type": "image/png" },
-        { "src": "/PWA-ejemplo1/icons/icon-180x180.png", "sizes": "180x180", "type": "image/png" },
-        { "src": "/PWA-ejemplo1/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "/PWA-ejemplo1/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
-    ]
+  "name": "Mi primera PWA",
+  "short_name": "PWA1",
+  "start_url": "/PWA-ejemplo1/index.html",
+  "scope": "/PWA-ejemplo1/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2196f3",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/PWA-ejemplo1/icons/icon-96x96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "/PWA-ejemplo1/icons/icon-180x180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/PWA-ejemplo1/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/PWA-ejemplo1/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
 }

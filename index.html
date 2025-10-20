@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sin internet mi chavo</title>
-    <!--Vincular manifest-->
-    <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sin internet mi chavo</title>
 
-    <!--Color de la barra del navegador en moviles-->
-    <meta name="theme-color" content="#2196f3">
+  <!-- Vincular manifest -->
+  <link rel="manifest" href="/PWA-ejemplo1/manifest.json">
+
+  <!-- Color de barra del navegador -->
+  <meta name="theme-color" content="#2196f3">
 </head>
 <body>
-    <h1>Bienvenido a mi PWA</h1>
-    <p>todo chidoo</p>
-    <button onclick="alert('Hola desde mi PWA, por favor espera...')">
-        Descargar
-    </button>
+  <h1>Bienvenido a mi PWA</h1>
+  <p>Todo chidoo 😎</p>
 
-    <ul>
-        <li>
-            <a href="/index.html">Inicio</a>
-            <a href="/login.html">Iniciar sesión</a>
-        </li>
-    </ul>
+  <button onclick="alert('Hola desde mi PWA, por favor espera...')">
+    Descargar
+  </button>
 
-    <!--Registrar el service worker-->
-    <script>
-        if("serviceWorker" in navigator){
-            navigator.serviceWorker.register("sw.js")
-            .then(reg => console.log("service  Worker registrado"))
-            .catch(err => console.log("Error al registrar el SW"))
-        }
-    </script>
+  <ul>
+    <li>
+      <a href="/PWA-ejemplo1/index.html">Inicio</a> |
+      <a href="/PWA-ejemplo1/login.html">Iniciar sesión</a>
+    </li>
+  </ul>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/PWA-ejemplo1/sw.js")
+        .then(() => console.log("✅ Service Worker registrado"))
+        .catch((err) => console.error("❌ Error al registrar el SW:", err));
+    }
+  </script>
 </body>
 </html>
