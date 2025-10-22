@@ -1,54 +1,54 @@
 // Service Worker para la PWA en GitHub Pages
 
-const CACHE_NAME = "mi-pwa-v3";
+const CACHE_NAME = 'pwa-v1';
 const BASE_PATH = "/PWA-ejemplo1/"; // 👈 importante: nombre del repo
 
 const urlsToCache = [
-  `${BASE_PATH}index.html`,
-  `${BASE_PATH}login.html`,
-  `${BASE_PATH}offline.html`,
-  `${BASE_PATH}manifest.json`,
-  `${BASE_PATH}icons/icon-96x96.png`,
-  `${BASE_PATH}icons/icon-180x180.png`,
-  `${BASE_PATH}icons/icon-192x192.png`,
-  `${BASE_PATH}icons/icon-512x512.png`
+    './',
+    './index.html',
+    './offline.html',
+    './manifest.json',
+    './icons/icon-96x96.png',
+    './icons/icon-180x180.png',
+    './icons/icon-192x192.png',
+    './icons/icon-512x512.png'
 ];
 
 // Instalación y cacheo
 self.addEventListener("install", (event) => {
-  console.log("[ServiceWorker] Instalando...");
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log("[ServiceWorker] Archivos cacheados");
-      return cache.addAll(urlsToCache);
-    })
-  );
+    self.skipWaiting(); // forzar que el SW pase a activate
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => cache.addAll(urlsToCache))
+    );
 });
 
 // Activación: limpiar cachés antiguas
 self.addEventListener("activate", (event) => {
-  console.log("[ServiceWorker] Activando...");
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      )
-    )
-  );
+    event.waitUntil(
+        (async () => {
+            // borrar caches viejos si aplica
+            const keys = await caches.keys();
+            await Promise.all(keys.map(k => { if (k !== CACHE_NAME) return caches.delete(k); }));
+            await self.clients.claim(); // tomar control inmediato de las páginas
+        })()
+    );
 });
 
 // Interceptar peticiones y servir desde cache
 self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return (
-        response ||
-        fetch(event.request).catch(() =>
-          caches.match(`${BASE_PATH}offline.html`)
-        )
-      );
-    })
-  );
+    if (event.request.method !== 'GET') return;
+    event.respondWith(
+        fetch(event.request)
+            .then(response => {
+                // opcional: actualizar cache en segundo plano
+                return response;
+            })
+            .catch(() => {
+                // si falla la red, intentar cache
+                return caches.match(event.request).then(cached => {
+                    return cached || caches.match('./offline.html');
+                });
+            })
+    );
 });
